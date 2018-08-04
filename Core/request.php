@@ -6,8 +6,9 @@ class Request {
 
 	public static function uri() {
 		
-		return trim($_SERVER['REQUEST_URI'], '/');		//use $_SERVER global variable to request uri
+		return trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');		//use $_SERVER global variable to request uri
 
+		//parse_url() accepts a uri and aspecific part which user wants as second arg
 		
 
 	}

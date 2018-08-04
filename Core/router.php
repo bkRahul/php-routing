@@ -2,7 +2,10 @@
 
 class Router {
 
-	protected $routes = [];		//create a new empty array
+	public $routes = [		//register routes specifically  for the TYPE of requests 
+		'GET' => [],
+		'POST' => []
+	];		//create a new empty array
 	
 	public static function load($file) {		//create a static function load which accepts a file parameter
 
@@ -23,15 +26,23 @@ class Router {
 
 
 //direct the uri and return routes specified
-	public function direct($uri) {
+	// public function direct($uri) {
 
-		if (array_key_exists($uri, $this->routes))	{		//array_key _exists(key, search) searches through the array for a specified key 													//given a uri if a key exists in the array
-			return $this->routes[$uri];		//return the uri						
+	// 	if (array_key_exists($uri, $this->routes))	{		//array_key _exists(key, search) searches through the array for a specified key 													//given a uri if a key exists in the array
+	// 		return $this->routes[$uri];		//return the uri						
 
-		}
+	// 	}
 
-		throw new Exception('No routes defined for this URI'.$uri);
+	// 	throw new Exception('No routes defined for this URI'.$uri);
 		
+	// }
+
+	public function get($uri, $controller) {
+		$this->routes['GET'][$uri] = $controller;
+	}
+
+	public function post($uri, $controller) {
+		$this->routes['POST'][$uri] = $controller;
 	}
 	
 }
