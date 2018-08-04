@@ -8,7 +8,7 @@
 
 <h3>Please enter your Name</h3>
 
-<form method="GET" action="/php-routing/names">
+<form method="POST" action="/php-routing/names">
 
 	<input type="text" name="name"></input>
 

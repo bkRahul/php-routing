@@ -28,6 +28,5 @@
 
 	$router->post('php-routing/names' , 'Controllers/add-name.php');
 
-var_dump($router->routes);
 
 ?>

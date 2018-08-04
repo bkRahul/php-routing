@@ -1,5 +1,5 @@
 <?php
 
-var_dump($_GET['name']);
+var_dump('Your name is'.$_POST['name']);
 
 ?>

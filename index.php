@@ -17,12 +17,12 @@ $database = require 'Core/bootstrap.php';
 
 //die(var_dump($app));
 
-$uri = Request::uri();
+//$uri = Request::uri();
 
-$router = Router::load('routes.php');		//call the static load method by passing routes.php as parameter
+//$router = Router::load('routes.php');		//call the static load method by passing routes.php as parameter
 
 //require $router->direct($uri);		//require the direct() method by passing uri 
 
-//require Router::load('routes.php')->direct($uri);		//chaining require the returned  
+require Router::load('routes.php')->direct(Request::uri(), Request::method());		//chaining require the returned  
 
 ?>
