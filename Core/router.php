@@ -39,8 +39,8 @@ class Router {
 //direct the uri and return routes specified
 	public function direct($uri, $requestType) {
 
-		if (array_key_exists($uri, $this->routes[$requestType]))	{		//array_key _exists(key, search) searches through the array for a specified key 													//given a uri if a key exists in the array
-			return $this->routes[$requestType][$uri];		//return the uri						
+		if (array_key_exists($uri, $this->routes[$requestType]))	{		//array_key _exists(key, search) searches through the array for a specified key 													
+			return $this->routes[$requestType][$uri];		//given a uri if a key exists in the array return the uri						
 
 		}
 
