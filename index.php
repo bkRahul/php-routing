@@ -23,6 +23,6 @@ $database = require 'Core/bootstrap.php';
 
 //require $router->direct($uri);		//require the direct() method by passing uri 
 
-require Router::load('routes.php')->direct(Request::uri(), Request::method());		//chaining require the returned  
+require Router::load('routes.php')->direct(Request::uri(), Request::method());		//chaining require the returned uri and type of request method as arguments
 
 ?>
