@@ -1,10 +1,8 @@
 <?php
 
-
-$tasks = $app['database']->selectAllTasks('todos','Task');		//passes the tablename to fetch values and classname to store the values 
+$users = $app['database']->select('users');
 
 require 'Views/index.view.php';
-
 
 
 ?>
