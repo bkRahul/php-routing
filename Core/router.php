@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 class Router {
 
 	public $routes = [		//register routes specifically  for the TYPE of requests 
@@ -34,18 +36,39 @@ class Router {
 	}
 
 //direct the uri and return routes specified
-	public function direct($uri, $requestType) {
 
-		if (array_key_exists($uri, $this->routes[$requestType]))	{		//array_key _exists(key, search) searches through the array for a specified key 													
-			return $this->routes[$requestType][$uri];		//given a uri if a key exists in the array with a request type, return the uri						
+    public function direct($uri, $requestType)
+    {
+    
+        if (array_key_exists($uri, $this->routes[$requestType])) {	//array_key _exists(key, search) searches through the array for a specified key 													
+			
 
-		}
+        return $this->callAction(
+    
+                ...explode('@', $this->routes[$requestType][$uri])
+    
+            );
+    
+        }
+    
+        throw new Exception('No route defined for this URI.');
+    
+    }
 
-		throw new Exception('No routes defined for this URI'.$uri);
-		
-	}
 
-	
+	protected function callAction($controller, $action) {
+
+		$controller = "App\\Controllers\\{$controller}";
+
+		$controller = new $controller;
+
+        if (! method_exists($controller, $action)) {
+            throw new Exception(
+                "{$controller} does not respond to the {$action} action."
+            );
+        }
+        return $controller->$action();
+    }
 }
 
 ?>

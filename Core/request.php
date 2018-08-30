@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 //fetch information abuot current browser request
 
 class Request {

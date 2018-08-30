@@ -4,7 +4,20 @@
 
 	<h1>Users Registered</h1>
 
-	<?php
+
+<h3>Please enter your Name</h3>
+
+<form method="POST" action="/php-routing/users">		<!-- accepts the user input through POST method -->
+
+	<input type="text" name="name"></input>
+
+	<button type="submit">Submit</button>
+
+</form>
+
+<?php
+
+
 
 		foreach ($users as $user) {  ?>
 
@@ -16,5 +29,5 @@
 
 			<?php }	?>
 
-			
+
 <?php require 'partials/foot.php' ?>

@@ -1,15 +1,29 @@
 <?php
 
-$app = [];		//create a new empty array 
+use App\Core\App;
+
+App::bind('config', require 'config.php');
 
 
-$app['config'] = require 'config.php';		//stores the returned associative array into $config
+App::bind('database', new QueryBuilder(
+
+	Connection::make(App::get('config')['database'])
+
+));
 
 
-require 'Core/Database/queryBuilder.php';
+function view($name, $data = []) {
+
+	extract($data);
+
+	return require "App/Views/{$name}.view.php";
+}
 
 
-$app['database'] = new queryBuilder(Connection::make($app['config']['database']));
+	function redirect($path) {
 
+		header("Location: /php-routing/{$path}");
+
+	}
 
 ?>
